@@ -2,8 +2,11 @@ const body = document.body;
 body.classList.add("js-enabled");
 
 const themeButtons = [...document.querySelectorAll(".theme-option")];
+const modeToggle = document.querySelector(".mode-toggle");
 const storedTheme = localStorage.getItem("portfolio-theme");
-const defaultTheme = storedTheme || "lagoon";
+const storedMode = localStorage.getItem("portfolio-mode");
+const defaultTheme = storedTheme || body.dataset.theme || "seaglass";
+const defaultMode = storedMode || body.dataset.mode || "day";
 
 const formatCounter = (value) => {
   if (value >= 1000) {
@@ -25,7 +28,20 @@ const applyTheme = (theme) => {
   localStorage.setItem("portfolio-theme", theme);
 };
 
+const applyMode = (mode) => {
+  const isNight = mode === "night";
+  body.dataset.mode = isNight ? "night" : "day";
+
+  if (modeToggle) {
+    modeToggle.setAttribute("aria-pressed", String(isNight));
+    modeToggle.setAttribute("aria-label", isNight ? "Switch to day mode" : "Switch to night mode");
+  }
+
+  localStorage.setItem("portfolio-mode", body.dataset.mode);
+};
+
 applyTheme(defaultTheme);
+applyMode(defaultMode);
 
 document.querySelectorAll(".counter").forEach((counter) => {
   counter.textContent = "0";
@@ -33,6 +49,10 @@ document.querySelectorAll(".counter").forEach((counter) => {
 
 themeButtons.forEach((button) => {
   button.addEventListener("click", () => applyTheme(button.dataset.theme));
+});
+
+modeToggle?.addEventListener("click", () => {
+  applyMode(body.dataset.mode === "night" ? "day" : "night");
 });
 
 const revealObserver = new IntersectionObserver(
@@ -46,7 +66,7 @@ const revealObserver = new IntersectionObserver(
       observer.unobserve(entry.target);
     });
   },
-  { threshold: 0.2 }
+  { threshold: 0.18 }
 );
 
 document.querySelectorAll(".reveal").forEach((section) => revealObserver.observe(section));
@@ -80,7 +100,7 @@ const counterObserver = new IntersectionObserver(
       observer.unobserve(element);
     });
   },
-  { threshold: 0.6 }
+  { threshold: 0.55 }
 );
 
 document.querySelectorAll(".counter").forEach((counter) => counterObserver.observe(counter));
@@ -126,7 +146,7 @@ const sectionObserver = new IntersectionObserver(
   },
   {
     threshold: 0.45,
-    rootMargin: "-10% 0px -40% 0px",
+    rootMargin: "-10% 0px -45% 0px",
   }
 );
 
