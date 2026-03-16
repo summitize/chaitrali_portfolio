@@ -7,11 +7,14 @@
   </defs>
   <rect width="64" height="64" rx="20" fill="#f7f5ef"/>
   <rect x="8" y="8" width="48" height="48" rx="16" fill="url(#g)"/>
+  <circle cx="32" cy="24" r="10" fill="#fff" opacity=".1"/>
   <g transform="translate(8 8) scale(2)">
-    <path d="M12 3.3 18.1 5.6v5.8c0 4.1-2.4 7.7-6.1 9.4-3.7-1.7-6.1-5.3-6.1-9.4V5.6Z" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="1.75"/>
-    <path d="M8.4 14.7 10.9 12.3 15.8 9.4" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"/>
-    <circle cx="8.4" cy="14.7" r="1" fill="#fff"/>
-    <circle cx="10.9" cy="12.3" r="1" fill="#fff"/>
-    <circle cx="15.8" cy="9.4" r="1" fill="#fff"/>
+    <path d="M12 4.1 9.7 6.2h4.6Z" fill="#fff"/>
+    <path d="M10.35 6.2h3.3v1.55h-3.3Z" fill="#fff"/>
+    <path d="M9.35 8.2 5.3 9.7l4.1 1.55.75-3.05Z" fill="#fff" opacity=".74"/>
+    <path d="M14.65 8.2 18.7 9.7l-4.1 1.55-.75-3.05Z" fill="#fff" opacity=".74"/>
+    <path d="M10.15 8.2h3.7l1.35 9.3H8.8ZM11.2 13.6h1.6v3.9h-1.6Z" fill="#fff" fill-rule="evenodd"/>
+    <path d="M8 18.6h8" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.6"/>
+    <circle cx="12" cy="7.05" r=".55" fill="#fff"/>
   </g>
 </svg>
