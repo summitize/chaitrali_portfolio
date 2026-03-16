@@ -10,6 +10,13 @@
 </head>
 <body data-theme="seaglass" data-mode="day">
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-brand-mark" viewBox="0 0 24 24">
+      <path d="M12 3.3 18.1 5.6v5.8c0 4.1-2.4 7.7-6.1 9.4-3.7-1.7-6.1-5.3-6.1-9.4V5.6Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.75"/>
+      <path d="M8.4 14.7 10.9 12.3 15.8 9.4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"/>
+      <circle cx="8.4" cy="14.7" r="1" fill="currentColor"/>
+      <circle cx="10.9" cy="12.3" r="1" fill="currentColor"/>
+      <circle cx="15.8" cy="9.4" r="1" fill="currentColor"/>
+    </symbol>
     <symbol id="icon-arrow" viewBox="0 0 24 24">
       <path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9"/>
     </symbol>
@@ -39,7 +46,11 @@
   <div class="page-shell">
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Go to top of portfolio">
-        <span class="brand-mark">CP</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="brand-mark-icon" aria-hidden="true">
+            <use href="#icon-brand-mark"></use>
+          </svg>
+        </span>
         <span class="brand-copy">
           <strong>Chaitrali Pandharpure</strong>
           <span>Risk & Governance</span>

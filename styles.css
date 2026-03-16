@@ -163,15 +163,21 @@ button {
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50% 44% 56% 48%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.22), transparent 32%),
+    linear-gradient(135deg, var(--accent), var(--accent-2));
   color: #ffffff;
-  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: 0.92rem;
-  font-weight: 700;
+  overflow: hidden;
   box-shadow: 0 10px 20px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.brand-mark-icon {
+  width: 1.45rem;
+  height: 1.45rem;
+  display: block;
 }
 
 .brand-copy {
