@@ -310,13 +310,32 @@ main {
 }
 
 h1 {
+  position: relative;
   margin: 0;
-  max-width: 11.4ch;
+  max-width: 12.8ch;
+  padding-left: clamp(3rem, 5vw, 3.9rem);
   color: var(--heading);
   font-size: clamp(2.95rem, 5vw, 4.5rem);
   line-height: 0.91;
   letter-spacing: -0.05em;
   text-wrap: balance;
+}
+
+h1::before,
+h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  background: #ffffff url("images/Chaitrali.png") center / cover no-repeat;
+  border: 1px solid color-mix(in srgb, var(--heading) 10%, transparent);
+  box-shadow: 0 12px 24px rgba(16, 32, 38, 0.12);
+}
+
+h1::before {
+  top: 0.1em;
+  width: clamp(2rem, 3.2vw, 2.55rem);
+  height: clamp(2rem, 3.2vw, 2.55rem);
+  border-radius: 0.78rem;
 }
 
 .hero-summary {
@@ -327,27 +346,116 @@ h1 {
 }
 
 .profile-placeholder {
-  margin-top: 18px;
+  position: relative;
+  width: min(100%, 320px);
+  margin-top: 22px;
+  padding: 14px 0 22px;
+}
+
+.profile-window {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--heading) 8%, transparent);
+  border-radius: 30px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 95%, white), color-mix(in srgb, var(--surface) 84%, var(--accent-4) 12%));
+  box-shadow: 0 28px 54px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.profile-window::before {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  right: -1rem;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 68%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.profile-window-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--heading) 8%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, white 82%, var(--surface-2)), color-mix(in srgb, var(--surface-2) 94%, white));
+}
+
+.profile-window-dots {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff8f7f;
+  box-shadow: 16px 0 0 #f2d38b, 32px 0 0 #7dd6c8;
+}
+
+.profile-window-title {
+  margin-left: auto;
+  color: var(--text-soft);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .profile-placeholder-frame {
-  display: block;
-  width: min(100%, 220px);
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
-  border-radius: 24px;
+  position: relative;
+  padding: 14px;
+  aspect-ratio: 1 / 1;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 92%, white), color-mix(in srgb, var(--surface) 84%, var(--accent-4) 10%));
-  box-shadow: 0 20px 44px color-mix(in srgb, var(--accent) 16%, transparent);
+    linear-gradient(160deg, color-mix(in srgb, var(--surface-2) 96%, white), color-mix(in srgb, var(--canvas) 82%, var(--accent-4) 14%));
 }
 
 .profile-photo {
   width: 100%;
   height: 100%;
   display: block;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--heading) 7%, transparent);
   object-fit: cover;
-  object-position: center top;
+  object-position: center 12%;
+  box-shadow: 0 18px 30px rgba(16, 32, 38, 0.16);
+  filter: saturate(1.03) contrast(1.03);
+}
+
+.profile-photo-sheen {
+  position: absolute;
+  inset: 14px;
+  border-radius: 22px;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04) 34%, transparent 56%);
+  pointer-events: none;
+}
+
+.profile-window-note {
+  position: absolute;
+  right: -0.8rem;
+  bottom: 0;
+  display: grid;
+  gap: 4px;
+  max-width: 12rem;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--heading) 8%, transparent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface-2) 94%, white);
+  box-shadow: 0 18px 34px rgba(16, 32, 38, 0.14);
+  backdrop-filter: blur(16px);
+}
+
+.profile-window-note strong {
+  color: var(--heading);
+  font-size: 0.95rem;
+}
+
+.profile-window-note span {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 
 .hero-trace {
@@ -530,6 +638,7 @@ h1 {
 .section {
   position: relative;
   padding: 72px 0 58px;
+  scroll-margin-top: 124px;
 }
 
 .section::after {
@@ -550,13 +659,22 @@ h1 {
 }
 
 h2 {
+  position: relative;
   margin: 0;
-  max-width: 16ch;
+  max-width: 18ch;
+  padding-left: clamp(2rem, 3vw, 2.7rem);
   color: var(--heading);
   font-size: clamp(2rem, 3.4vw, 3.2rem);
   line-height: 1.02;
   letter-spacing: -0.03em;
   text-wrap: balance;
+}
+
+h2::before {
+  top: 0.12em;
+  width: clamp(1.15rem, 1.8vw, 1.5rem);
+  height: clamp(1.15rem, 1.8vw, 1.5rem);
+  border-radius: 0.5rem;
 }
 
 .two-column {
@@ -891,7 +1009,7 @@ h2 {
 }
 
 .contact-card h2 {
-  max-width: 18ch;
+  max-width: 20ch;
 }
 
 .site-footer {
@@ -1096,7 +1214,19 @@ body[data-mode="night"] .mode-knob {
   }
 
   h1 {
+    padding-left: 2.9rem;
+  }
+
+  h2 {
+    padding-left: 2rem;
+  }
+
+  h1 {
     font-size: clamp(2.6rem, 13vw, 3.8rem);
+  }
+
+  .section {
+    scroll-margin-top: 164px;
   }
 
   .hero-panel,
@@ -1118,6 +1248,17 @@ body[data-mode="night"] .mode-knob {
 
   .hero-trace span {
     width: 100%;
+  }
+
+  .profile-placeholder {
+    width: min(100%, 360px);
+    padding-bottom: 0;
+  }
+
+  .profile-window-note {
+    position: static;
+    max-width: none;
+    margin-top: 14px;
   }
 
   .accordion-trigger {
