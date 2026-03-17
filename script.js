@@ -2,11 +2,14 @@ const body = document.body;
 body.classList.add("js-enabled");
 
 const themeButtons = [...document.querySelectorAll(".theme-option")];
+const fontButtons = [...document.querySelectorAll(".font-option")];
 const modeToggle = document.querySelector(".mode-toggle");
 const storedTheme = localStorage.getItem("portfolio-theme");
 const storedMode = localStorage.getItem("portfolio-mode");
+const storedFont = localStorage.getItem("portfolio-font");
 const defaultTheme = storedTheme || body.dataset.theme || "seaglass";
 const defaultMode = storedMode || body.dataset.mode || "day";
+const defaultFont = storedFont || body.dataset.font || "plex";
 
 const formatCounter = (value) => {
   if (value >= 1000) {
@@ -28,6 +31,18 @@ const applyTheme = (theme) => {
   localStorage.setItem("portfolio-theme", theme);
 };
 
+const applyFont = (font) => {
+  body.dataset.font = font;
+
+  fontButtons.forEach((button) => {
+    const isActive = button.dataset.font === font;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  localStorage.setItem("portfolio-font", font);
+};
+
 const applyMode = (mode) => {
   const isNight = mode === "night";
   body.dataset.mode = isNight ? "night" : "day";
@@ -41,6 +56,7 @@ const applyMode = (mode) => {
 };
 
 applyTheme(defaultTheme);
+applyFont(defaultFont);
 applyMode(defaultMode);
 
 document.querySelectorAll(".counter").forEach((counter) => {
@@ -49,6 +65,10 @@ document.querySelectorAll(".counter").forEach((counter) => {
 
 themeButtons.forEach((button) => {
   button.addEventListener("click", () => applyTheme(button.dataset.theme));
+});
+
+fontButtons.forEach((button) => {
+  button.addEventListener("click", () => applyFont(button.dataset.font));
 });
 
 modeToggle?.addEventListener("click", () => {

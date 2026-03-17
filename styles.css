@@ -12,6 +12,8 @@
   --accent-3: #f2d38b;
   --accent-4: #98ddd2;
   --shadow: 0 32px 80px rgba(16, 32, 38, 0.12);
+  --font-body: "IBM Plex Sans", "Segoe UI", "Aptos", "Trebuchet MS", sans-serif;
+  --font-heading: "IBM Plex Serif", Georgia, serif;
 }
 
 body[data-theme="apricot"] {
@@ -71,9 +73,24 @@ body {
     radial-gradient(circle at 10% 6%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 26%),
     radial-gradient(circle at 90% 12%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 28%),
     linear-gradient(180deg, var(--canvas), var(--canvas-deep));
-  font-family: "Aptos", "Trebuchet MS", sans-serif;
+  font-family: var(--font-body);
   line-height: 1.65;
   transition: background 0.35s ease, color 0.35s ease;
+}
+
+body[data-font="plex"] {
+  --font-body: "IBM Plex Sans", "Segoe UI", "Aptos", "Trebuchet MS", sans-serif;
+  --font-heading: "IBM Plex Serif", Georgia, serif;
+}
+
+body[data-font="spectral"] {
+  --font-body: "Source Sans 3", "Segoe UI", "Aptos", sans-serif;
+  --font-heading: "Spectral", Georgia, serif;
+}
+
+body[data-font="classic"] {
+  --font-body: "Segoe UI", "Aptos", "Trebuchet MS", sans-serif;
+  --font-heading: Georgia, "Times New Roman", serif;
 }
 
 body::before,
@@ -195,7 +212,7 @@ h2,
 .role,
 .card-title,
 .accordion-trigger span:first-child {
-  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: var(--font-heading);
 }
 
 .brand-copy strong {
@@ -295,8 +312,8 @@ main {
 .hero-name {
   margin: 0 0 10px;
   color: var(--heading);
-  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: 1.35rem;
+  font-family: var(--font-heading);
+  font-size: 1.18rem;
   font-weight: 700;
 }
 
@@ -315,8 +332,8 @@ h1 {
   max-width: 12.8ch;
   padding-left: clamp(3rem, 5vw, 3.9rem);
   color: var(--heading);
-  font-size: clamp(2.95rem, 5vw, 4.5rem);
-  line-height: 0.91;
+  font-size: clamp(2.45rem, 4.35vw, 3.95rem);
+  line-height: 0.95;
   letter-spacing: -0.05em;
   text-wrap: balance;
 }
@@ -503,6 +520,7 @@ h1::before {
 
 .button:hover,
 .theme-option:hover,
+.font-option:hover,
 .accordion-trigger:hover,
 .timeline-card:hover,
 .content-card:hover {
@@ -565,9 +583,9 @@ h1::before {
   margin: 0;
   max-width: 20ch;
   color: var(--heading);
-  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: 1.7rem;
-  line-height: 1.08;
+  font-family: var(--font-heading);
+  font-size: 1.54rem;
+  line-height: 1.12;
   text-wrap: balance;
 }
 
@@ -664,8 +682,8 @@ h2 {
   max-width: 18ch;
   padding-left: clamp(2rem, 3vw, 2.7rem);
   color: var(--heading);
-  font-size: clamp(2rem, 3.4vw, 3.2rem);
-  line-height: 1.02;
+  font-size: clamp(1.74rem, 2.9vw, 2.58rem);
+  line-height: 1.08;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
@@ -703,7 +721,7 @@ h2::before {
 .card-title {
   margin: 0 0 16px;
   color: var(--heading);
-  font-size: 1.45rem;
+  font-size: 1.32rem;
 }
 
 .bullet-list {
@@ -815,7 +833,7 @@ h2::before {
 
 .role {
   color: var(--heading);
-  font-size: 1.42rem;
+  font-size: 1.3rem;
 }
 
 .company {
@@ -866,8 +884,8 @@ h2::before {
 
 .accordion-trigger span:first-child {
   color: var(--heading);
-  font-size: 1.45rem;
-  line-height: 1.05;
+  font-size: 1.3rem;
+  line-height: 1.12;
 }
 
 .accordion-trigger span:last-child {
@@ -896,6 +914,12 @@ h2::before {
 }
 
 .theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.font-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -936,8 +960,8 @@ h2::before {
 
 .project-card strong {
   color: var(--heading);
-  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-size: 1.28rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
 }
 
 .project-cta {
@@ -963,7 +987,8 @@ h2::before {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.theme-option.active {
+.theme-option.active,
+.font-option.active {
   border-color: color-mix(in srgb, var(--accent) 50%, var(--line));
   box-shadow: 0 20px 48px color-mix(in srgb, var(--accent) 16%, transparent);
 }
@@ -971,6 +996,10 @@ h2::before {
 .theme-option-head {
   display: grid;
   gap: 4px;
+}
+
+.section-heading-compact {
+  margin-top: 36px;
 }
 
 .theme-option-head strong {
@@ -995,6 +1024,64 @@ h2::before {
   height: 28px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.font-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-2) 94%, white), color-mix(in srgb, var(--surface) 84%, var(--accent-4) 8%));
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.font-option-head {
+  display: grid;
+  gap: 6px;
+  max-width: 18ch;
+}
+
+.font-option-head strong {
+  color: var(--heading);
+  font-size: 1.02rem;
+}
+
+.font-option-head span {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.font-preview {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface-2) 88%, white);
+  color: var(--heading);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.font-preview-plex {
+  font-family: "IBM Plex Serif", Georgia, serif;
+}
+
+.font-preview-spectral {
+  font-family: "Spectral", Georgia, serif;
+}
+
+.font-preview-classic {
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 .contact-card {
@@ -1102,6 +1189,7 @@ body[data-mode="night"] .mode-knob {
 .mobile-nav a:focus-visible,
 .project-card:focus-visible,
 .theme-option:focus-visible,
+.font-option:focus-visible,
 .accordion-trigger:focus-visible,
 .menu-toggle:focus-visible,
 .contact-strip a:focus-visible,
@@ -1121,7 +1209,8 @@ body[data-mode="night"] .mode-knob {
   .impact-lanes,
   .project-grid,
   .credential-grid,
-  .theme-grid {
+  .theme-grid,
+  .font-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1182,7 +1271,8 @@ body[data-mode="night"] .mode-knob {
   .impact-lanes,
   .project-grid,
   .credential-grid,
-  .theme-grid {
+  .theme-grid,
+  .font-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1222,7 +1312,7 @@ body[data-mode="night"] .mode-knob {
   }
 
   h1 {
-    font-size: clamp(2.6rem, 13vw, 3.8rem);
+    font-size: clamp(2.3rem, 11vw, 3.35rem);
   }
 
   .section {
