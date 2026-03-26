@@ -362,6 +362,51 @@ h1::before {
   font-size: 1.04rem;
 }
 
+.hero-language-callout {
+  display: grid;
+  gap: 12px;
+  max-width: 42rem;
+  margin-top: 20px;
+  padding: 18px 20px;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent-3) 24%, white), color-mix(in srgb, var(--surface-2) 92%, white) 54%, color-mix(in srgb, var(--accent-4) 18%, var(--surface)) 100%);
+  box-shadow: 0 24px 40px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.hero-language-kicker {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--heading) 8%, white);
+  color: color-mix(in srgb, var(--accent) 78%, var(--heading));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.hero-language-body {
+  display: grid;
+  gap: 8px;
+}
+
+.hero-language-body strong {
+  max-width: 28ch;
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: clamp(1.08rem, 2vw, 1.42rem);
+  line-height: 1.12;
+}
+
+.hero-language-body p {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--text);
+  font-size: 0.96rem;
+}
+
 .profile-placeholder {
   position: relative;
   width: min(100%, 320px);
@@ -490,6 +535,12 @@ h1::before {
   color: var(--heading);
   font-size: 0.86rem;
   font-weight: 700;
+}
+
+.hero-trace-feature {
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--line));
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent-4) 32%, white), color-mix(in srgb, var(--accent-3) 34%, white));
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
 .hero-actions,
@@ -911,6 +962,34 @@ h2::before {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+.credential-spotlight {
+  margin-bottom: 18px;
+}
+
+.credential-spotlight-copy {
+  margin: 0;
+  max-width: 72ch;
+  color: var(--text);
+}
+
+.credential-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.credential-badges span {
+  padding: 10px 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-2) 88%, white);
+  color: var(--heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(14, 30, 36, 0.06);
 }
 
 .theme-grid {
