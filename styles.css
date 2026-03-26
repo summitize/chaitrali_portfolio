@@ -296,6 +296,17 @@ main {
   padding: 0.5rem 0 0;
 }
 
+.hero-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 280px);
+  gap: 22px;
+  align-items: start;
+}
+
+.hero-story {
+  min-width: 0;
+}
+
 .hero-copy::before {
   content: "";
   position: absolute;
@@ -364,12 +375,12 @@ h1::before {
 
 .hero-language-callout {
   display: grid;
-  gap: 12px;
-  max-width: 42rem;
+  gap: 10px;
+  max-width: 38rem;
   margin-top: 20px;
-  padding: 18px 20px;
+  padding: 14px 16px;
   border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--line));
-  border-radius: 24px;
+  border-radius: 20px;
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--accent-3) 24%, white), color-mix(in srgb, var(--surface-2) 92%, white) 54%, color-mix(in srgb, var(--accent-4) 18%, var(--surface)) 100%);
   box-shadow: 0 24px 40px color-mix(in srgb, var(--accent) 12%, transparent);
@@ -393,25 +404,26 @@ h1::before {
 }
 
 .hero-language-body strong {
-  max-width: 28ch;
   color: var(--heading);
   font-family: var(--font-heading);
-  font-size: clamp(1.08rem, 2vw, 1.42rem);
+  font-size: clamp(1rem, 1.8vw, 1.22rem);
   line-height: 1.12;
 }
 
 .hero-language-body p {
   margin: 0;
-  max-width: 46ch;
+  max-width: 40ch;
   color: var(--text);
-  font-size: 0.96rem;
+  font-size: 0.9rem;
 }
 
 .profile-placeholder {
   position: relative;
-  width: min(100%, 320px);
-  margin-top: 22px;
-  padding: 14px 0 22px;
+  width: 100%;
+  max-width: 280px;
+  justify-self: end;
+  margin-top: 0;
+  padding: 4px 0 22px;
 }
 
 .profile-window {
@@ -1311,6 +1323,11 @@ body[data-mode="night"] .mode-knob {
     gap: 32px;
   }
 
+  .hero-lead {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
   .site-header {
     gap: 14px;
   }
@@ -1357,6 +1374,12 @@ body[data-mode="night"] .mode-knob {
 
   .lane-card {
     padding: 20px;
+  }
+
+  .profile-placeholder {
+    max-width: 320px;
+    justify-self: start;
+    padding-bottom: 0;
   }
 }
 
